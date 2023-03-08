@@ -1,5 +1,8 @@
 -- crow firmware updater
--- exceptionally inelegant
+-- INTERNET REQUIRED
+--
+-- OPEN MAIDEN FIRST
+-- for more detailed progress
 
 running = false
 note = "> k3 to begin"
@@ -18,7 +21,7 @@ function ver(result)
 	url = result:match("h.*")
 	url = url:sub(1,-2)
 	notify("> downloading firmware")
-  	local cmd = "wget -O -T 180 -q -P /home/we/dust/code/fledge/ " .. url
+  	local cmd = "sudo wget -T 180 -q -P /home/we/dust/code/fledge/ " .. url
 	print(cmd)
 	norns.system_cmd(cmd, flash)
 end
