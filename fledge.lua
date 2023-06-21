@@ -21,7 +21,10 @@ function ver(result)
 	url = result:match("h.*")
 	url = url:sub(1,-2)
 	notify("> downloading firmware")
-  	local cmd = "sudo wget -T 180 -q -P /home/we/dust/code/fledge/ " .. url
+	if util.file_exists('/home/we/dust/code/fledge/crow.dfu') then
+	  norns.system_cmd('rm -rf /home/we/dust/code/fledge/crow.dfu')
+	end
+  local cmd = "sudo wget -T 180 -q -P /home/we/dust/code/fledge/ " .. url
 	print(cmd)
 	norns.system_cmd(cmd, flash)
 end
@@ -55,6 +58,3 @@ function key(n,z)
 		go()
 	end
 end
-
-
-
